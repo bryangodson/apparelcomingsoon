@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png" />
+
+    <title>Frontend Mentor | Base Apparel coming soon page</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: raleway;
+      }
+      :root {
+        --desaturatedRed: hsl(0, 36%, 70%);
+        --softRed: hsl(0, 93%, 68%);
+        --DarkGrayishRed: hsl(0, 6%, 24%);
+      }
+
+      header {
+        width: 100%;
+        padding: 20px;
+      }
+
+      .hero {
+        width: 100%;
+        height: 220px;
+        background: url(./images/hero-mobile.jpg);
+        background-size: 100%;
+        background-repeat: no-repeat;
+      }
+      .soon {
+        width: 100%;
+        padding: 20px;
+      }
+      .soon h1 {
+        width: 100%;
+        text-align: center;
+        text-transform: uppercase;
+        color: var(--desaturatedRed);
+        letter-spacing: 12px;
+      }
+      .soon span {
+        color: var(--DarkGrayishRed);
+      }
+      .soon p {
+        text-align: center;
+        line-height: 28px;
+        color: var(--desaturatedRed);
+      }
+      .bottom {
+        width: 100%;
+        padding: 20px;
+      }
+      .input {
+        width: 100%;
+        height: 50px;
+        display: flex;
+        border-radius: 25px;
+        border: 1px solid var(--desaturatedRed);
+        justify-content: space-between;
+        align-items: center;
+      }
+      .input input {
+        height: 100%;
+        width: 70%;
+        border: 0;
+        border-radius: 25px;
+        padding: 20px;
+      }
+      .input input:focus {
+        outline: none;
+      }
+      .input input::placeholder {
+        color: var(--desaturatedRed);
+      }
+      .input section:first-child {
+        width: 10%;
+      }
+      .input section:last-child {
+        width: 20%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, hsl(0, 80%, 86%), hsl(0, 74%, 74%));
+        border-radius: 25px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+      .input section:last-child:hover {
+        filter: drop-shadow(10px 10px 15px var(--desaturatedRed));
+      }
+      .input section img {
+        width: 18px;
+      }
+      .error {
+        color: var(--softRed);
+        padding-left: 20px;
+        font-size: 0.9rem;
+        display: none;
+      }
+      .right {
+        display: none;
+      }
+      .errorImg {
+        visibility: hidden;
+      }
+
+      @media screen and (min-width: 768px) {
+        .container {
+          display: flex;
+          justify-content: space-between;
+        }
+        .hero {
+          display: none;
+        }
+        .left {
+          width: 55%;
+          padding-inline: 10%;
+          height: 100vh;
+          display: flex;
+          justify-content: space-around;
+          flex-direction: column;
+          background: url(./images/bg-pattern-desktop.svg);
+          background-size: 100% 100%;
+        }
+        header img {
+          padding-top: 10px;
+        }
+
+        .soon h1 {
+          text-align: left;
+          font-size: 2.5rem;
+        }
+        .soon p {
+          text-align: left;
+        }
+        .right {
+          width: 45%;
+          display: block;
+          height: 100vh;
+        }
+        .right img {
+          width: 100%;
+          height: 100%;
+          object-fit: fill;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="left">
+        <header>
+          <img src="./images/logo.svg" alt="" />
+        </header>
+        <div class="hero"></div>
+        <div class="soon">
+          <h1>
+            We're <br /><span>coming <br />soon</span>
+          </h1>
+          <br />
+          <p>
+            Hello fellow shoppers! We're currently building our new fashion
+            store. Add your email below to stay up-to-date with announcements
+            and our launch deal.
+          </p>
+        </div>
+        <div class="bottom">
+          <div class="input">
+            <input type="email" placeholder="Email Address" class="email" />
+            <section>
+              <img src="./images/icon-error.svg" alt="" class="errorImg" />
+            </section>
+            <section class="submit">
+              <img src="./images/icon-arrow.svg" alt="" />
+            </section>
+          </div>
+          <div>
+            <p class="error">Please provide a valid email</p>
+          </div>
+        </div>
+      </div>
+      <div class="right">
+        <img src="./images/hero-desktop.jpg" alt="" />
+      </div>
+    </div>
+    <!-- <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="#">Your Name Here</a>.
+    </div> -->
+    <script>
+      let button = document.querySelector(".submit ");
+      let email = document.querySelector(".email");
+      let error = document.querySelector(".error");
+      let errowImg = document.querySelector(".errorImg");
+      button.addEventListener("click", () => {
+        if (!email.checkValidity()) {
+          error.style.display = "block";
+          errowImg.style.visibility = "visible";
+        } else {
+          error.style.display = "none";
+          errowImg.style.visibility = "hidden";
+        }
+      });
+    </script>
+  </body>
+</html>
